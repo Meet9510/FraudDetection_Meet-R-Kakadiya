@@ -63,6 +63,8 @@
         /* Default 125% zoom for desktop — resets to 100% on mobile */
         html {
             zoom: 1.25;
+            overflow-x: hidden;
+            width: 100%;
         }
 
         @media (max-width: 1024px) {
@@ -253,7 +255,7 @@
 
         /* FULL LAYOUT SECTION ELEMENTS */
         .section-block {
-            width: 100vw;
+            width: 100%;
             padding: 8rem 0;
             border-bottom: 1px solid var(--border-color);
             position: relative;
