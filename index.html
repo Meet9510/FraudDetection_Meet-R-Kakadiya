@@ -2284,6 +2284,43 @@
             flex-shrink: 0;
         }
 
+        .founder-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            box-shadow: 0 8px 24px rgba(96, 1, 252, 0.25);
+            flex-shrink: 0;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .founder-avatar:hover {
+            transform: scale(1.08) rotate(3deg);
+        }
+
+        .founder-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .founder-socials {
+            display: flex;
+            gap: 0.65rem;
+            margin-top: 0.5rem;
+        }
+
+        .small-social {
+            width: 32px;
+            height: 32px;
+        }
+
+        .small-social svg {
+            width: 14px;
+            height: 14px;
+        }
+
         .footer-socials {
             display: flex;
             gap: 0.85rem;
@@ -2809,27 +2846,41 @@
             <div class="content-container about-grid">
                 <div class="about-card reveal-3d">
                     <h3>Kakadiya Technologies</h3>
-                    <p style="margin-top: 1rem;">Kakadiya Technologies is a pioneer in developing secure, auditable, and
+                    <p style="margin-top: 1rem; margin-bottom: 2rem;">Kakadiya Technologies is a pioneer in developing secure, auditable, and
                         high-performance financial infrastructure. Our mission is to democratize explainable machine
                         learning models for developers and risk operations teams worldwide.</p>
 
                     <div class="leadership-block">
-                        <img src="assets/meet_kakadiya.jpg" alt="Meet R Kakadiya" class="avatar-img">
-                        <div>
+                        <img src="assets/meet_kakadiya.jpg" alt="Meet R Kakadiya" class="founder-avatar">
+                        <div class="founder-info">
                             <div class="leader-name">Meet R Kakadiya</div>
                             <div class="leader-title">Founder & Chief Technology Officer</div>
+                            <div class="founder-socials">
+                                <a href="https://www.linkedin.com/in/meet-kakadiya-9a0498317/" target="_blank" class="social-icon-btn small-social" aria-label="LinkedIn Profile">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M22.23 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0zM7.12 20.45H3.56V9H7.12v11.45zM5.34 7.43c-1.14 0-2.06-.92-2.06-2.06 0-1.14.92-2.06 2.06-2.06 1.14 0 2.06.92 2.06 2.06 0 1.14-.92 2.06-2.06 2.06zm15.11 13.02h-3.56v-5.6c0-1.34-.03-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.7H9.33V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://github.com/Meet9510" target="_blank" class="social-icon-btn small-social" aria-label="GitHub Profile">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="reveal-3d" style="transition-delay: 0.15s;">
                     <div class="section-header" style="margin-bottom: 2rem;">
-                        <div class="section-tag">Our Philosophy</div>
+                        <div class="section-tag">Founder's Vision</div>
                         <div class="section-title">Security with Transparency</div>
                     </div>
-                    <p style="color: var(--text-secondary); font-size: 1.05rem;">We believe in an open-core approach to
-                        artificial intelligence in finance. Anomaly detection shouldn't be an un-auditable dark box. By
-                        pairing powerful algorithms with explainable frameworks, we give risk managers the tools to
-                        adapt and inspect every single transaction classification.</p>
+                    <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">
+                        "Security is not just about blocking threats; it is about building trust. By combining state-of-the-art LightGBM models with transparent SHAP explanations, Sentinel AI ensures that every automated risk decision is fair, auditable, and clear."
+                    </p>
+                    <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; font-style: italic;">
+                        "We believe in an open-core approach to artificial intelligence in finance. Anomaly detection shouldn't be an un-auditable dark box. Through Kakadiya Technologies, we are shaping a future where financial intelligence is both exceptionally powerful and deeply understandable."
+                    </p>
                 </div>
             </div>
         </section>
