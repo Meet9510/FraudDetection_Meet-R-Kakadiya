@@ -56,6 +56,14 @@
             --hero-subtext: rgba(255, 255, 255, 0.85);
         }
 
+        /* Default 125% zoom for desktop — resets to 100% on mobile */
+        html {
+            zoom: 1.25;
+        }
+        @media (max-width: 1024px) {
+            html { zoom: 1; }
+        }
+
         * {
             margin: 0;
             padding: 0;
