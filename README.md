@@ -1,9 +1,22 @@
 # Sentinel AI — Fraud Detection Intelligence Platform
 
+<div align="center">
+  
+  [![Live Landing Page](https://img.shields.io/badge/Live_Landing_Page-GitHub_Pages-6001fc?style=for-the-badge&logo=github)](https://meet9510.github.io/FraudDetection_Meet-R-Kakadiya/)
+  [![Production Console](https://img.shields.io/badge/Production_Console-Streamlit-ff4b4b?style=for-the-badge&logo=streamlit)](https://sentinelaibykakadiyatechnologies.streamlit.app/)
+  [![GitHub Repository](https://img.shields.io/badge/GitHub_Repository-Repository-181717?style=for-the-badge&logo=github)](https://github.com/Meet9510/FraudDetection_Meet-R-Kakadiya)
+
+</div>
+
 > **IEEE-CIS Credit Card Fraud Detection · End-to-End ML Pipeline · Enterprise Dashboard**  
 > Author: **Meet R Kakadiya** | Role: Machine Learning Intern | Year: 2026
 
 ---
+
+## 🔗 Live Access Links & Deployments
+- **Marketing & Landing Page:** [https://meet9510.github.io/FraudDetection_Meet-R-Kakadiya/](https://meet9510.github.io/FraudDetection_Meet-R-Kakadiya/) *(Hosted via GitHub Pages)*
+- **Streamlit Production Console:** [https://sentinelaibykakadiyatechnologies.streamlit.app/](https://sentinelaibykakadiyatechnologies.streamlit.app/) *(Hosted via Streamlit Cloud)*
+- **GitHub Code Repository:** [https://github.com/Meet9510/FraudDetection_Meet-R-Kakadiya](https://github.com/Meet9510/FraudDetection_Meet-R-Kakadiya)
 
 ## What Is This Project?
 
@@ -37,12 +50,18 @@ FraudDetection_Meet R Kakadiya/
 │       ├── 3_Risk_Policy_Optimizer.py  # Threshold tuning + cost curve analysis
 │       ├── 4_SMOTE_&_AI_Science.py     # Model benchmarks + feature engineering
 │       └── 5_Audit_Compliance_Ledger.py # Searchable, exportable transaction log
+├── assets/                     # Screenshots, visual plots, and graphics assets
+│   ├── logo.png / logo_light.png
+│   ├── cyber_banner.png / cyber_banner_light.png
+│   ├── analytics.png / analytics_light.png
+│   ├── dashboard_overview.png
+│   ├── dashboard_how_it_works.png
+│   ├── model_comparison.png
+│   └── shap_summary.png
 ├── data/
 │   ├── train_transaction.csv   # ~590K transaction records
 │   └── train_identity.csv      # ~144K identity/device records
 ├── analysis.ipynb              # Full data science pipeline notebook
-├── model_comparison.png        # Benchmarking chart (root copy)
-├── shap_summary.png            # Global SHAP importance chart
 ├── requirements.txt            # Python dependencies
 ├── REPORT.md                   # Project report (methodology, results, findings)
 └── README.md                   # This file
@@ -202,6 +221,10 @@ Fraud Probability: 87.4%  →  CRITICAL — AUTOMATED DECLINE
 
 ## Model Benchmarking Results
 
+<div align="center">
+  <img src="assets/model_comparison.png" alt="Model Comparison Plot" width="85%" style="border-radius: 8px; margin: 1rem 0;" />
+</div>
+
 | Model | AUC-ROC | PR-AUC | Recall | Precision | F1-Score |
 |-------|---------|--------|--------|-----------|----------|
 | **LightGBM (Tuned via Optuna)** | **0.9787** | **0.8490** | **83.1%** | **86.7%** | **84.9%** |
@@ -215,6 +238,12 @@ Fraud Probability: 87.4%  →  CRITICAL — AUTOMATED DECLINE
 - High precision (86.7%) → fewer false declines (customer friction)
 
 ---
+
+## Global Explainability (SHAP attributions)
+
+<div align="center">
+  <img src="assets/shap_summary.png" alt="SHAP Global Importance Plot" width="85%" style="border-radius: 8px; margin: 1rem 0;" />
+</div>
 
 ## Risk Policy Framework
 

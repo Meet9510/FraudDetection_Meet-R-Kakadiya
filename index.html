@@ -2284,7 +2284,7 @@
     <nav>
         <div class="nav-container">
             <a class="logo-block" href="#home">
-                <img id="nav-logo" src="logo_light.png" alt="Sentinel AI Logo" class="logo-img">
+                <img id="nav-logo" src="assets/logo_light.png" alt="Sentinel AI Logo" class="logo-img">
                 <div class="logo-text-wrapper">
                     <div class="logo-text-title">Sentinel AI</div>
                     <div class="logo-text-subtitle">by Kakadiya Technologies</div>
@@ -2717,7 +2717,7 @@
                     </div>
                 </div>
                 <div class="analytics-visual-container reveal-3d" style="transition-delay: 0.15s;">
-                    <img id="analytics-img" src="analytics_light.png"
+                    <img id="analytics-img" src="assets/analytics_light.png"
                         alt="Sentinel AI Explainable Data Flow Graph Illustration" class="analytics-img">
                 </div>
             </div>
@@ -2799,7 +2799,7 @@
         <div class="footer-container">
             <div class="footer-brand">
                 <a class="logo-block" href="#home">
-                    <img id="footer-logo" src="logo_light.png" alt="Sentinel AI Logo" class="logo-img">
+                    <img id="footer-logo" src="assets/logo_light.png" alt="Sentinel AI Logo" class="logo-img">
                     <div class="logo-text-wrapper">
                         <div class="logo-text-title">Sentinel AI</div>
                         <div class="logo-text-subtitle">by Kakadiya Technologies</div>
@@ -2843,13 +2843,13 @@
 
         // Theme-Aware Asset Lists
         function updateThemeImages(isDark) {
-            document.getElementById('nav-logo').src = isDark ? 'logo.png' : 'logo_light.png';
-            document.getElementById('footer-logo').src = isDark ? 'logo.png' : 'logo_light.png';
+            document.getElementById('nav-logo').src = isDark ? 'assets/logo.png' : 'assets/logo_light.png';
+            document.getElementById('footer-logo').src = isDark ? 'assets/logo.png' : 'assets/logo_light.png';
             const heroImg = document.getElementById('hero-img');
             if (heroImg) {
-                heroImg.src = isDark ? 'cyber_banner.png' : 'cyber_banner_light.png';
+                heroImg.src = isDark ? 'assets/cyber_banner.png' : 'assets/cyber_banner_light.png';
             }
-            document.getElementById('analytics-img').src = isDark ? 'analytics.png' : 'analytics_light.png';
+            document.getElementById('analytics-img').src = isDark ? 'assets/analytics.png' : 'assets/analytics_light.png';
         }
 
         // Light/Dark Theme controller
