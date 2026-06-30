@@ -26,8 +26,7 @@ Imagine you're shopping online and you tap "Pay Now" for a $1,800 item at 3 AM u
 
 ```text
 FraudDetection_Meet R Kakadiya/
-├── landing/
-│   └── index.html              # Marketing/landing page (open in browser)
+├── index.html                  # Marketing/landing page (open in browser)
 ├── dashboard/
 │   ├── app.py                  # Streamlit app entry point
 │   ├── model.pkl               # Trained LightGBM payload (model + scaler + SHAP)
@@ -84,10 +83,10 @@ pip install -r requirements.txt
 
 ### Step 4 — Open the Landing Page (Optional)
 
-Open `landing/index.html` directly in any browser — no server needed:
+Open `index.html` directly in any browser — no server needed:
 
 ```bash
-start landing/index.html
+start index.html
 ```
 
 This shows the product marketing page with a **"Launch Console"** button that links to the dashboard at `http://localhost:8501`.
@@ -235,7 +234,7 @@ The **Risk Policy Optimizer** page lets you drag the threshold slider and see th
 |---|-------|------------|
 | 1 | `ModuleNotFoundError: No module named 'dashboard'` in page files | All 5 page files now use `try/except` dual-import: `from theme import ...` first, fallback to `from dashboard.theme import ...` |
 | 2 | Dashboard must be started from project root | README now explicitly states: run `streamlit run dashboard/app.py` from root |
-| 3 | Landing page "Launch Console" link had no target | `href="http://localhost:8501"` with `target="_blank"` already present in `landing/index.html` |
+| 3 | Landing page "Launch Console" link had no target | `href="http://localhost:8501"` with `target="_blank"` already present in `index.html` |
 
 ---
 
