@@ -1023,44 +1023,110 @@
             color: var(--text-primary);
         }
 
+        /* ── Hamburger Button ── */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 38px;
+            height: 38px;
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            padding: 7px;
+            transition: border-color 0.2s ease;
+            flex-shrink: 0;
+        }
+        .hamburger:hover { border-color: var(--primary); }
+        .hamburger span {
+            display: block;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* ── Mobile Nav Drawer ── */
+        .mobile-nav-drawer {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            background: var(--bg-navbar);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 1.5rem 2rem 1.5rem;
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 999;
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .mobile-nav-drawer.open {
+            display: flex;
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .mobile-nav-drawer .nav-link {
+            font-size: 1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .mobile-nav-drawer .nav-link:last-of-type { border-bottom: none; }
+        .mobile-nav-cta {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .mobile-nav-cta .btn-filled,
+        .mobile-nav-cta .btn-outline-pill {
+            flex: 1;
+            text-align: center;
+            justify-content: center;
+        }
+
+        /* ── Tablet (≤1024px) ── */
         @media (max-width: 1024px) {
-            nav-container {
-                padding: 0 1rem;
-            }
-            .nav-links {
-                display: none;
-            }
+            .nav-container { padding: 0 1.5rem; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            /* Hide desktop action buttons */
+            .nav-actions .btn-filled,
+            .nav-actions .btn-outline-pill { display: none; }
+
             #home {
                 min-height: auto;
                 padding: 4rem 0;
             }
-            .hero-text-block {
-                align-items: center;
-                text-align: center;
-            }
-            .hero-text-block h1 {
-                font-size: 2.8rem;
-            }
-            .hero-actions-row {
-                justify-content: center;
-            }
-            .hero-console-mockup {
-                transform: none !important;
-            }
+            .hero-grid { padding: 0 2rem; }
+            .hero-text-block h1 { font-size: 2.8rem; }
+            .hero-actions-row { justify-content: center; }
+            .hero-console-mockup { transform: none !important; }
+
             .hero-grid, .split-grid, .about-grid, .platform-explorer-container {
                 grid-template-columns: 1fr;
-                gap: 4rem;
+                gap: 3rem;
             }
             .telemetry-row {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
                 gap: 1.5rem;
             }
             .footer-container {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
             }
             .content-container, .footer-container, .footer-bottom {
-                padding: 0 2rem;
+                padding: 0 2.5rem;
             }
+            .section-block { padding: 5rem 0; }
             .playground-grid {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
@@ -1071,9 +1137,108 @@
                 gap: 1.5rem;
             }
             .control-row {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
                 gap: 1rem;
             }
+            .comparison-matrix-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+            }
+            .section-title { font-size: 2rem; }
+            .explorer-features-list { grid-template-columns: 1fr; gap: 1rem; }
+        }
+
+        /* ── Mobile (≤768px) ── */
+        @media (max-width: 768px) {
+            .nav-container { padding: 0 1.25rem; }
+            #home { padding: 3rem 0 2rem 0; }
+            .hero-grid { padding: 0 1.25rem; }
+            .hero-text-block h1 { font-size: 2.1rem; letter-spacing: -0.025em; }
+            .hero-text-block p { font-size: 0.98rem; }
+            .btn-hero-primary, .btn-hero-secondary {
+                padding: 0.65rem 1.25rem;
+                font-size: 0.88rem;
+            }
+            .hero-actions-row { gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+
+            .section-block { padding: 4rem 0; }
+            .section-title { font-size: 1.75rem; }
+            .section-desc { font-size: 0.95rem; }
+            .content-container, .footer-container, .footer-bottom { padding: 0 1.25rem; }
+
+            .telemetry-row {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+                padding: 1.5rem;
+            }
+            .telemetry-value { font-size: 1.75rem; }
+
+            .platform-explorer-container { grid-template-columns: 1fr; gap: 2rem; }
+            .explorer-tabs { flex-direction: row; overflow-x: auto; gap: 0.6rem; padding-bottom: 0.5rem; }
+            .explorer-tab-btn { min-width: 160px; flex-shrink: 0; padding: 0.9rem; }
+            .explorer-content-card { padding: 2rem; min-height: auto; }
+            .explorer-content-body h3 { font-size: 1.35rem; }
+            .explorer-features-list { grid-template-columns: 1fr; }
+
+            .playground-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .playground-panel { padding: 2rem; }
+            .control-row { grid-template-columns: 1fr; }
+            .verdict-display { flex-direction: column; align-items: flex-start; }
+            .gauge-container { width: 110px; height: 110px; }
+            .gauge-number { font-size: 1.3rem; }
+            .shap-feature-name { width: 110px; font-size: 0.78rem; }
+
+            .split-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .sci-pipeline::before { display: none; }
+
+            .comparison-matrix-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+
+            .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .about-card { padding: 2rem; }
+            .leadership-block { gap: 1rem; }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                margin-bottom: 3rem;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+                padding: 1.5rem 1.25rem 0 1.25rem;
+            }
+            footer { padding: 4rem 0 3rem 0; }
+        }
+
+        /* ── Small Mobile (≤480px) ── */
+        @media (max-width: 480px) {
+            nav { height: 60px; }
+            .mobile-nav-drawer { top: 60px; }
+            .nav-container { padding: 0 1rem; }
+            .logo-text-title { font-size: 0.95rem; }
+            .logo-text-subtitle { display: none; }
+
+            .hero-text-block h1 { font-size: 1.75rem; }
+            .hero-grid { padding: 0 1rem; }
+            .btn-hero-primary, .btn-hero-secondary { font-size: 0.82rem; padding: 0.6rem 1rem; }
+            .hero-actions-row { flex-direction: column; align-items: center; width: 100%; }
+            .btn-hero-primary, .btn-hero-secondary { width: 100%; justify-content: center; }
+
+            .section-title { font-size: 1.5rem; }
+            .telemetry-value { font-size: 1.5rem; }
+
+            .explorer-tab-btn { min-width: 130px; }
+            .tab-info h4 { font-size: 0.82rem; }
+            .tab-info p { font-size: 0.68rem; }
+
+            .playground-panel { padding: 1.5rem; }
+            .gauge-container { width: 100px; height: 100px; }
+            .shap-feature-name { width: 90px; font-size: 0.72rem; }
+
+            .about-card { padding: 1.5rem; }
+            .avatar { width: 54px; height: 54px; font-size: 1.1rem; }
+            .comparison-card { padding: 1.75rem; }
         }
 
         /* CARD HOVER AND DYNAMIC INTERACTIONS */
@@ -1605,16 +1770,7 @@
             line-height: 1.6;
         }
 
-        @media (max-width: 1024px) {
-            .explorer-content-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .comparison-matrix-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-        }
+        /* (Additional responsive rules handled in the consolidated @media blocks above) */
     </style>
 </head>
 <body>
@@ -1643,9 +1799,25 @@
                     <svg viewBox="0 0 24 24" id="theme-icon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                 </button>
                 <a href="http://localhost:8501" target="_blank" class="btn-filled">Launch Console</a>
+                <button class="hamburger" id="hamburger-btn" aria-label="Open menu" onclick="toggleMobileNav()">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Nav Drawer -->
+    <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+        <a class="nav-link" href="#home" onclick="closeMobileNav()">Home</a>
+        <a class="nav-link" href="#features" onclick="closeMobileNav()">Features</a>
+        <a class="nav-link" href="#playground" onclick="closeMobileNav()">Playground</a>
+        <a class="nav-link" href="#different" onclick="closeMobileNav()">How We Differ</a>
+        <a class="nav-link" href="#whatis" onclick="closeMobileNav()">How It Works</a>
+        <a class="nav-link" href="#about" onclick="closeMobileNav()">About Project</a>
+        <div class="mobile-nav-cta">
+            <a href="http://localhost:8501" target="_blank" class="btn-filled" onclick="closeMobileNav()">Launch Console</a>
+        </div>
+    </div>
 
     <!-- MAIN BODY -->
     <main>
@@ -2441,6 +2613,37 @@
             }, 350);
         }
         setInterval(cycleWord, 2500);
+
+        // ── Mobile Nav Toggle ──
+        function toggleMobileNav() {
+            const drawer = document.getElementById('mobile-nav-drawer');
+            const btn = document.getElementById('hamburger-btn');
+            drawer.classList.toggle('open');
+            btn.classList.toggle('open');
+            document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+        }
+        function closeMobileNav() {
+            const drawer = document.getElementById('mobile-nav-drawer');
+            const btn = document.getElementById('hamburger-btn');
+            drawer.classList.remove('open');
+            btn.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        // Close on outside click
+        document.addEventListener('click', function(e) {
+            const drawer = document.getElementById('mobile-nav-drawer');
+            const btn = document.getElementById('hamburger-btn');
+            if (drawer && drawer.classList.contains('open')) {
+                if (!drawer.contains(e.target) && !btn.contains(e.target)) {
+                    closeMobileNav();
+                }
+            }
+        });
+        // Close on scroll
+        window.addEventListener('scroll', function() {
+            const drawer = document.getElementById('mobile-nav-drawer');
+            if (drawer && drawer.classList.contains('open')) closeMobileNav();
+        }, { passive: true });
     </script>
 </body>
 </html>

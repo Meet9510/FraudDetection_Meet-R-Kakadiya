@@ -579,6 +579,68 @@ def inject_custom_css(theme_mode):  # noqa: PLR0915
             grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
         }}
+
+        /* ── Responsive: Tablet (≤900px) ──────────────────────── */
+        @media (max-width: 900px) {{
+            .skeleton-kpi-row {{
+                grid-template-columns: repeat(2, 1fr);
+            }}
+            .skeleton-3col {{
+                grid-template-columns: repeat(2, 1fr);
+            }}
+            .skeleton-row {{
+                grid-template-columns: 1fr;
+            }}
+            .saas-header {{
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+                padding: 1rem 1.25rem;
+            }}
+            .saas-header-title h1 {{ font-size: 1.3rem; }}
+        }}
+
+        /* ── Responsive: Mobile (≤600px) ──────────────────────── */
+        @media (max-width: 600px) {{
+            /* Main content padding reduction */
+            .block-container {{
+                padding: 1rem 0.75rem !important;
+                max-width: 100% !important;
+            }}
+            /* Stack sidebar nav label sections */
+            .snav-brand {{
+                padding: 1rem 0.75rem 0.75rem 0.75rem;
+            }}
+            .snav-logo {{ font-size: 1.2rem; }}
+            .snav-item {{
+                padding: 0.5rem 0.75rem;
+                font-size: 0.78rem;
+            }}
+            /* KPI skeleton row: single column on small mobile */
+            .skeleton-kpi-row {{
+                grid-template-columns: 1fr 1fr;
+                gap: 0.75rem;
+            }}
+            .skeleton-kpi {{ height: 80px; }}
+            .skeleton-chart-wide {{ height: 180px; }}
+            .skeleton-3col {{ grid-template-columns: 1fr; }}
+            .skeleton-block {{ height: 160px; }}
+            .skeleton-block-sm {{ height: 110px; }}
+            /* Cards */
+            .saas-card {{ padding: 1rem !important; }}
+            .saas-card-value {{ font-size: 1.5rem; }}
+            .saas-header {{
+                padding: 0.9rem 1rem;
+                border-radius: 8px;
+            }}
+            .saas-header-title h1 {{ font-size: 1.15rem; }}
+            /* Token card shrink */
+            .saas-token-card {{ max-width: 100%; }}
+            .saas-token-number {{ font-size: 1rem; }}
+            /* Blueprint cards */
+            .saas-blueprint {{ padding: 1rem; }}
+            .saas-blueprint-title {{ font-size: 0.88rem; }}
+        }}
     </style>
     """
     st.markdown(css, unsafe_allow_html=True)
