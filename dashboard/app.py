@@ -31,16 +31,6 @@ border  = "#1E293B" if st.session_state.theme_mode == "Professional Black" else 
 # ── Hero Header ───────────────────────────────────────────────
 st.markdown(f"""
 <div style="text-align:center; padding: 3rem 1rem 2rem 1rem;">
-    <div style="display:inline-flex; align-items:center; gap:0.5rem;
-                background:{v_card}; border:1px solid {border};
-                padding:0.3rem 0.9rem; border-radius:20px; margin-bottom:1.5rem;">
-        <span style="width:7px;height:7px;background:{primary};border-radius:50%;
-                     display:inline-block;box-shadow:0 0 8px {primary};"></span>
-        <span style="font-size:0.72rem;font-weight:700;color:{primary};
-                     text-transform:uppercase;letter-spacing:0.1em;">
-            Live · Sentinel AI v4.0 Active
-        </span>
-    </div>
     <h1 style="font-size:3rem;font-weight:900;color:{v_text};margin:0;
                letter-spacing:-0.04em;line-height:1.1;">
         Autonomous Fraud<br>Intelligence Console

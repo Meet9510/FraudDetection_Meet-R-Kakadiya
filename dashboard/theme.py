@@ -1027,10 +1027,6 @@ def init_shared_sidebar(theme_mode):
                 <span style="color:{muted};">PRECISION</span>
                 <span style="color:{card_txt};font-weight:700;">{assets['performance']['Precision']:.4f}</span>
             </div>
-            <div style="margin-top:0.5rem;display:flex;align-items:center;gap:0.4rem;">
-                <span style="width:6px;height:6px;background:{primary};border-radius:50%;
-                             display:inline-block;box-shadow:0 0 6px {primary};"></span>
-                <span style="color:{primary};font-weight:700;">ACTIVE DEPLOYED</span>
-            </div>
+
         </div>
         """, unsafe_allow_html=True)

@@ -32,10 +32,6 @@ st.markdown("""
         <h1>Sentinel Risk Management Console</h1>
         <p>Simulate transaction attributes and analyze machine learning attribution values in real-time.</p>
     </div>
-    <div class="saas-badge">
-        <span class="status-dot"></span>
-        Operator: Meet R Kakadiya
-    </div>
 </div>
 """, unsafe_allow_html=True)
 
