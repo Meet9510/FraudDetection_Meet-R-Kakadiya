@@ -86,14 +86,67 @@ def inject_custom_css(theme_mode):  # noqa: PLR0915
             display: none !important;
         }}
 
-        /* Sidebar Styling */
+        /* ── Sidebar: Force Always Visible + Prevent Auto-Collapse ── */
         section[data-testid="stSidebar"] {{
             background-color: {v['bg_sidebar']} !important;
             border-right: 1px solid {v['sidebar_border']} !important;
+            min-width: 240px !important;
+            max-width: 300px !important;
+            transition: transform 0.3s ease !important;
         }}
-        section[data-testid="stSidebar"] h1, section[data-testid="stSidebar"] h2, section[data-testid="stSidebar"] h3, section[data-testid="stSidebar"] p, section[data-testid="stSidebar"] label {{
+        section[data-testid="stSidebar"] h1,
+        section[data-testid="stSidebar"] h2,
+        section[data-testid="stSidebar"] h3,
+        section[data-testid="stSidebar"] p,
+        section[data-testid="stSidebar"] label {{
             color: {v['sidebar_text']} !important;
         }}
+
+        /* ── Sidebar Collapse Toggle Button: Always Visible & Branded ── */
+        [data-testid="collapsedControl"] {{
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            background: {primary_color} !important;
+            border: none !important;
+            border-radius: 0 8px 8px 0 !important;
+            width: 24px !important;
+            height: 56px !important;
+            align-items: center !important;
+            justify-content: center !important;
+            cursor: pointer !important;
+            color: #FFFFFF !important;
+            box-shadow: 3px 0 12px {primary_color}44 !important;
+            top: 50vh !important;
+            transform: translateY(-50%) !important;
+            z-index: 999 !important;
+        }}
+        [data-testid="collapsedControl"]:hover {{
+            background: {primary_hover} !important;
+            width: 28px !important;
+        }}
+        [data-testid="collapsedControl"] svg {{
+            fill: #ffffff !important;
+            color: #ffffff !important;
+            width: 14px !important;
+            height: 14px !important;
+        }}
+
+        /* ── Sidebar expand button (chevron that appears when collapsed) ── */
+        button[data-testid="baseButton-header"] {{
+            background: {primary_color}22 !important;
+            border: 1px solid {primary_color}44 !important;
+            border-radius: 6px !important;
+            color: {primary_color} !important;
+        }}
+
+        /* ── Main content: don't let it bleed under sidebar ── */
+        .main .block-container {{
+            padding-left: 1.5rem !important;
+            padding-right: 1.5rem !important;
+            max-width: 100% !important;
+        }}
+
 
         /* Input & Widget Styling */
         div[data-baseweb="select"] > div {{
