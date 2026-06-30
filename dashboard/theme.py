@@ -75,15 +75,35 @@ def inject_custom_css(theme_mode):  # noqa: PLR0915
             font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
         }}
 
-        /* Hide default Streamlit header bar, footer, and menu */
-        [data-testid="stHeader"], header, footer, #MainMenu {{
+        /* Hide default Streamlit header bar visually but keep sidebar toggle functional */
+        [data-testid="stHeader"] {{
+            background: transparent !important;
+            background-color: transparent !important;
+            height: 0px !important;
+            min-height: 0px !important;
+            overflow: visible !important;
+            border: none !important;
+        }}
+        /* Keep header VISIBLE for sidebar toggle to work — just make it invisible */
+        [data-testid="stHeader"]::before,
+        [data-testid="stHeader"]::after {{
+            display: none !important;
+        }}
+        footer, #MainMenu {{
             display: none !important;
             visibility: hidden !important;
-            background: none !important;
-            background-color: transparent !important;
         }}
         .stDeployButton {{
             display: none !important;
+        }}
+        /* Streamlit's built-in hamburger menu for sidebar */
+        [data-testid="stSidebarNavCollapseIcon"],
+        [data-testid="stSidebarCollapsedControl"],
+        button[kind="header"],
+        [data-testid="stHeader"] button {{
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }}
 
         /* ── Sidebar: Force Always Visible + Prevent Auto-Collapse ── */
@@ -695,6 +715,103 @@ def inject_custom_css(theme_mode):  # noqa: PLR0915
             .saas-blueprint-title {{ font-size: 0.88rem; }}
         }}
     </style>
+
+    <script>
+    (function() {{
+        var PRIMARY = '{primary_color}';
+
+        /* Create floating sidebar toggle tab */
+        function createFloatingToggle() {{
+            if (document.getElementById('sentinel-sidebar-toggle')) return;
+            var btn = document.createElement('button');
+            btn.id = 'sentinel-sidebar-toggle';
+            btn.innerHTML = '&#9776;';
+            btn.title = 'Open Navigation';
+            btn.style.cssText = [
+                'position: fixed',
+                'left: 0',
+                'top: 50%',
+                'transform: translateY(-50%)',
+                'z-index: 99999',
+                'width: 32px',
+                'height: 56px',
+                'background: ' + PRIMARY,
+                'color: #fff',
+                'border: none',
+                'border-radius: 0 10px 10px 0',
+                'font-size: 16px',
+                'cursor: pointer',
+                'box-shadow: 3px 0 16px ' + PRIMARY + '66',
+                'display: none',
+                'align-items: center',
+                'justify-content: center',
+                'transition: width 0.2s ease'
+            ].join(';');
+            btn.onmouseover = function() {{ btn.style.width = '38px'; }};
+            btn.onmouseout  = function() {{ btn.style.width = '32px'; }};
+            btn.onclick = function() {{
+                /* Click Streamlit's built-in collapse control */
+                var nativeBtn = document.querySelector(
+                    '[data-testid="collapsedControl"] button, ' +
+                    '[data-testid="stSidebarCollapsedControl"] button, ' +
+                    'button[aria-label="Open sidebar"], ' +
+                    'button[aria-label="open sidebar"], ' +
+                    '[data-testid="stHeader"] button'
+                );
+                if (nativeBtn) {{ nativeBtn.click(); }}
+                btn.style.display = 'none';
+            }};
+            document.body.appendChild(btn);
+        }}
+
+        /* Show/hide our toggle based on sidebar state */
+        function syncToggleVisibility() {{
+            var sidebar = document.querySelector('[data-testid="stSidebar"]');
+            var toggle  = document.getElementById('sentinel-sidebar-toggle');
+            if (!sidebar || !toggle) return;
+            var rect = sidebar.getBoundingClientRect();
+            /* If sidebar is off-screen (collapsed), show our toggle */
+            if (rect.left < -50 || rect.width < 50) {{
+                toggle.style.display = 'flex';
+            }} else {{
+                toggle.style.display = 'none';
+            }}
+        }}
+
+        /* Force sidebar open on load */
+        function forceSidebarOpen() {{
+            var sidebar = document.querySelector('[data-testid="stSidebar"]');
+            if (!sidebar) return;
+            var rect = sidebar.getBoundingClientRect();
+            if (rect.left < -50 || rect.width < 50) {{
+                var btn = document.querySelector(
+                    '[data-testid="collapsedControl"] button, ' +
+                    'button[aria-label="Open sidebar"], ' +
+                    'button[aria-label="open sidebar"], ' +
+                    '[data-testid="stHeader"] button:first-child'
+                );
+                if (btn) {{ btn.click(); }}
+            }}
+        }}
+
+        function init() {{
+            createFloatingToggle();
+            forceSidebarOpen();
+            syncToggleVisibility();
+            /* Watch for sidebar state changes */
+            setInterval(syncToggleVisibility, 800);
+        }}
+
+        if (document.readyState === 'loading') {{
+            document.addEventListener('DOMContentLoaded', function() {{ setTimeout(init, 400); }});
+        }} else {{
+            setTimeout(init, 400);
+        }}
+        /* Also run after Streamlit re-renders */
+        setTimeout(init, 1000);
+        setTimeout(init, 2500);
+    }})();
+    </script>
     """
     st.markdown(css, unsafe_allow_html=True)
 
