@@ -14,7 +14,7 @@
 ---
 
 ## 🔗 Live Access Links & Deployments
-- **Marketing & Landing Page:** [https://meet9510.github.io/FraudDetection_Meet-R-Kakadiya/](https://meet9510.github.io/FraudDetection_Meet-R-Kakadiya/) *(Hosted via GitHub Pages)*
+- **Marketing & Landing Page:** [https://sentinelai-seven.vercel.app/) *(Hosted via GitHub Pages)*
 - **Streamlit Production Console:** [https://sentinelaibykakadiyatechnologies.streamlit.app/](https://sentinelaibykakadiyatechnologies.streamlit.app/) *(Hosted via Streamlit Cloud)*
 - **GitHub Code Repository:** [https://github.com/Meet9510/FraudDetection_Meet-R-Kakadiya](https://github.com/Meet9510/FraudDetection_Meet-R-Kakadiya)
 
